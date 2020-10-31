@@ -61,10 +61,11 @@ class MainActivity : AppCompatActivity() {
     fun registerLockScreenBroadCast() {
         mReceiver = object : BroadcastReceiver() {
             override fun onReceive(context: Context, intent: Intent) {
-                if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
-                } else if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
+                if (intent.action.equals(Intent.ACTION_SCREEN_OFF)) {
+                } else if (intent.action.equals(Intent.ACTION_SCREEN_ON)) {
                     mainViewModel.updateNumber()
-                } else if (intent.getAction().equals(Intent.ACTION_USER_PRESENT)) {
+                    updateUI()
+                } else if (intent.action.equals(Intent.ACTION_USER_PRESENT)) {
                 }
 
             }
